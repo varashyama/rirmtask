@@ -10,12 +10,12 @@ function App() {
   return (
     <div className="h-100">
       <AppShell>
-        <div className="container-fluid  bg-light h-100">
+        <div className="container-fluid pt-4 bg-light h-100">
           <div className="row">
             <section className="col-12 col-md-4 col-lg-3">
               <Compose />
             </section>
-            <section className="col-12 col-md-8">
+            <section className="col-12 col-md-8 bg-white">
               inbox
             </section>
           </div>

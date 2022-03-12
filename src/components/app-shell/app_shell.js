@@ -5,14 +5,12 @@ import Sidemenu from "./sidemenu";
 
 const AppShell = ({ children }) => {
     const [collapsed, setCollapsed] = useState(false);
-
-
     return (
         <div className="d-flex w-100 h-100 app-shell">
             <div className="h-100">
                 <Sidemenu collapsed={collapsed} />
             </div>
-            <div className="flex-fill">
+            <div className="flex-fill" style={{ overflowY: 'auto'}}>
                 <Header collapsed={collapsed} setCollapsed={setCollapsed}/>
                 {children}
             </div>
