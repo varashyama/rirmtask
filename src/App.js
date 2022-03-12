@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import AppShell from './components/app-shell/app_shell';
 import Compose from './components/compose/compose';
+import Inbox from './components/inbox/inbox';
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
               <Compose />
             </section>
             <section className="col-12 col-md-8 bg-white">
-              inbox
+              <Inbox />
             </section>
           </div>
         </div>
