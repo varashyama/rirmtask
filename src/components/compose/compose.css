@@ -1,0 +1,33 @@
+.compose-menu-container {
+  --compose-menu-lonk-color: #707375;
+}
+
+.compose-section-menu-hd {
+  color: var(--compose-menu-lonk-color);
+}
+
+.label-list a,
+.categories-list a,
+.folders_mail a {
+  text-decoration: none;
+  color: var(--compose-menu-lonk-color);
+}
+
+.folders_mail > div {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-bottom: 1px solid #d3d3d37d;
+}
+
+
+/* Category */
+
+.category-color-indicator {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+
+.label-list > div {
+    border-radius: 3px;
+}
