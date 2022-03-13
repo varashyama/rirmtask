@@ -1,0 +1,18 @@
+.compose_box {
+  position: fixed;
+  width: 80%;
+  height: 90vh;
+  right: 0;
+  bottom: 0;
+}
+
+.body_text{
+  height: 200px;
+}
+
+.composebox_sendbtn{
+    position: absolute;
+    bottom: 0;
+}
+
+

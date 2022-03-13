@@ -5,7 +5,9 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import AppShell from './components/app-shell/app_shell';
 import Compose from './components/compose/compose';
 import Inbox from './components/inbox/inbox';
+import { seedData } from './services/seed';
 
+seedData();
 
 function App() {
   return (

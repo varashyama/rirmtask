@@ -1,4 +1,6 @@
 import './compose.css';
+import { useState } from 'react';
+import ComposeBox from '../compose_box';
 
 
 const categories = [
@@ -12,14 +14,14 @@ const categories = [
 
 
 const labels = [
-   'Family',
-   'Work',
-   'Home',
-   'Children',
-   'Holidays',
-   'Music',
-   'Photography',
-   'Film',
+    'Family',
+    'Work',
+    'Home',
+    'Children',
+    'Holidays',
+    'Music',
+    'Photography',
+    'Film',
 ];
 
 
@@ -32,7 +34,7 @@ const Labels = () => {
                     labels.map((text) => (
                         <div key={text} className="d-inline-block bg-white p-1 border mx-2 mb-1">
                             <i className="bi bi-tag-fill"></i>
-                             <a className="ms-1" href="/">{text}</a>
+                            <a className="ms-1" href="/">{text}</a>
                         </div>
                     ))
                 }
@@ -40,6 +42,7 @@ const Labels = () => {
         </section>
     )
 }
+
 
 const CategoriesSection = () => {
     return (
@@ -49,8 +52,8 @@ const CategoriesSection = () => {
                 {
                     categories.map(({ color, text }) => (
                         <div key={text} className="d-flex py-1 align-items-center ">
-                            <div style={{ background: color }} class="category-color-indicator"></div>
-                             <a className="ms-2" href="/">{text}</a>
+                            <div style={{ background: color }} className="category-color-indicator"></div>
+                            <a className="ms-2" href="/">{text}</a>
                         </div>
                     ))
                 }
@@ -59,11 +62,16 @@ const CategoriesSection = () => {
     )
 }
 
+
+
+
 const Compose = () => {
+    const [composebox, setComposebox] = useState(false);
+
     return (
         <div className="px-4 compose-menu-container">
             <div className="text-center">
-                <button className="px-5 w-100 py-2 text-center text-white rounded border-0 bg-success">Compose Mail</button>
+                <button className="px-5 w-100 py-2 text-center text-white rounded border-0 bg-success" onClick={() => setComposebox(true)} >Compose Mail</button>
             </div>
 
             {/* Folders */}
@@ -74,16 +82,16 @@ const Compose = () => {
                         <a href="/"> <i className="bi bi-inbox-fill me-2"></i>Inbox</a>
                     </div>
                     <div>
-                        <a href="/"> <i class="bi bi-envelope me-2"></i>Sent Mail</a>
+                        <a href="/"> <i className="bi bi-envelope me-2"></i>Sent Mail</a>
                     </div>
                     <div>
-                        <a href="/"><i class="bi bi-star-fill me-2"></i>Important</a>
+                        <a href="/"><i className="bi bi-star-fill me-2"></i>Important</a>
                     </div>
                     <div>
-                        <a href="/"> <i class="bi bi-file-earmark-text me-2"></i>Drafts</a>
+                        <a href="/"> <i className="bi bi-file-earmark-text me-2"></i>Drafts</a>
                     </div>
                     <div>
-                        <a href="/"> <i class="bi bi-trash me-2"></i>Trash</a>
+                        <a href="/"> <i className="bi bi-trash me-2"></i>Trash</a>
                     </div>
 
                 </div>
@@ -91,7 +99,10 @@ const Compose = () => {
 
             <CategoriesSection />
 
-            <Labels/>
+            <Labels /> 
+
+            {composebox && <ComposeBox toggleCompose={setComposebox} />}
+
         </div>
 
     )
