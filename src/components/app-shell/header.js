@@ -1,8 +1,22 @@
 import { Button, PageHeader } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
+import { useContext } from "react";
+import { userContext } from "../../App";
+import { useNavigate } from "react-router-dom";
+
 
 const Header = ({ collapsed, setCollapsed }) => {
+  const { userName, setUserName } = useContext(userContext);
+  const navigate = useNavigate();
+
+
+ function handleLogout(){
+        setUserName("");
+        navigate("/");
+  }
+
   return (
+
     <div>
       <PageHeader className="py-0">
         <div className="d-flex justify-content-between">
@@ -25,7 +39,7 @@ const Header = ({ collapsed, setCollapsed }) => {
             </span>
             <span>
               <i className="fs-5 bi bi-box-arrow-right me-2"></i>
-              Logout
+              <button className="border-0 bg-white me-3" onClick={handleLogout}>Logout {userName}</button>
             </span>
           </div>
         </div>

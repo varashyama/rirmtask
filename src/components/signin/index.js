@@ -1,11 +1,26 @@
 import './signin.css';
+import { login } from "../../services/auth";
 import { Form, Input, Button, Checkbox } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { userContext } from '../../App';
+
 
 
 const Signin = () => {
+    const { userName, setUserName } = useContext(userContext);
+
+    const navigate = useNavigate();
+
 
     const onFinish = (values) => {
-        console.log('Success:', values);
+        const result = login(values.username, values.password);
+        if (result) {
+            setUserName(result.name);
+            // console.log(result.name);
+            navigate("/inbox");
+        }
+
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -16,6 +31,7 @@ const Signin = () => {
         <section>
             <Form
                 name="basic"
+                className="mt-5"
                 labelCol={{
                     span: 8,
                 }}
@@ -32,6 +48,7 @@ const Signin = () => {
                 <Form.Item
                     label="Username"
                     name="username"
+                    className="w-25 m-auto mt-3"
                     rules={[
                         {
                             required: true,
@@ -45,6 +62,7 @@ const Signin = () => {
                 <Form.Item
                     label="Password"
                     name="password"
+                    className="w-25 m-auto mt-3"
                     rules={[
                         {
                             required: true,
@@ -58,6 +76,7 @@ const Signin = () => {
                 <Form.Item
                     name="remember"
                     valuePropName="checked"
+                    className="m-auto w-25"
                     wrapperCol={{
                         offset: 8,
                         span: 16,
@@ -67,13 +86,14 @@ const Signin = () => {
                 </Form.Item>
 
                 <Form.Item
+                    className="m-auto w-25 px-4 py-2"
                     wrapperCol={{
                         offset: 8,
                         span: 16,
                     }}
                 >
                     <Button type="primary" htmlType="submit">
-                        Submit
+                        SIGN IN
                     </Button>
                 </Form.Item>
             </Form>

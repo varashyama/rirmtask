@@ -5,9 +5,8 @@ import MailListItem from "../mail-list-item";
 
 const mailContent = getInboxEmails();
 
-const Inbox = () => {
+const Sent = () => {
     return (
-        
         <AppShell>
         <div className="container-fluid pt-4 bg-light h-100">
           <div className="row">
@@ -17,7 +16,7 @@ const Inbox = () => {
             <section className="col-12 col-md-8 bg-white">
             <section className="d-flex justify-content-between align-items-center">
                 <div>
-                    <h4>Inbox</h4>
+                    <h4>Sent</h4>
                     <div className="d-flex mt-4">
                         <button className="bg-white border me-1"> <i className="me-1 bi bi-arrow-repeat"></i>Refresh</button>
                         <div className="bg-white border me-1">
@@ -63,4 +62,4 @@ const Inbox = () => {
 
 }
 
-export default Inbox;
+export default Sent;

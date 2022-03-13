@@ -1,6 +1,7 @@
 import './compose.css';
 import { useState } from 'react';
 import ComposeBox from '../compose_box';
+import { Link } from 'react-router-dom';
 
 
 const categories = [
@@ -34,7 +35,7 @@ const Labels = () => {
                     labels.map((text) => (
                         <div key={text} className="d-inline-block bg-white p-1 border mx-2 mb-1">
                             <i className="bi bi-tag-fill"></i>
-                            <a className="ms-1" href="/">{text}</a>
+                            <a className="ms-1" href="javascript:void(0);">{text}</a>
                         </div>
                     ))
                 }
@@ -53,7 +54,7 @@ const CategoriesSection = () => {
                     categories.map(({ color, text }) => (
                         <div key={text} className="d-flex py-1 align-items-center ">
                             <div style={{ background: color }} className="category-color-indicator"></div>
-                            <a className="ms-2" href="/">{text}</a>
+                            <a className="ms-2" href="javascript:void(0);">{text}</a>
                         </div>
                     ))
                 }
@@ -79,19 +80,22 @@ const Compose = () => {
                 <h5 className="compose-section-menu-hd fw-normal">Folders</h5>
                 <div className="folders_mail">
                     <div>
-                        <a href="/"> <i className="bi bi-inbox-fill me-2"></i>Inbox</a>
+                        <Link to="/inbox"><i className="bi bi-inbox-fill me-2"></i>Inbox</Link>
+                        {/* <a href="/"> <i className="bi bi-inbox-fill me-2"></i>Inbox</a> */}
                     </div>
                     <div>
-                        <a href="/"> <i className="bi bi-envelope me-2"></i>Sent Mail</a>
+                        <Link to="/sent"><i className="bi bi-envelope me-2"></i>Sent Mail</Link>
+
+                        {/* <a href="/"> <i className="bi bi-envelope me-2"></i>Sent Mail</a> */}
                     </div>
                     <div>
-                        <a href="/"><i className="bi bi-star-fill me-2"></i>Important</a>
+                        <a href="javascript:void(0);"><i className="bi bi-star-fill me-2"></i>Important</a>
                     </div>
                     <div>
-                        <a href="/"> <i className="bi bi-file-earmark-text me-2"></i>Drafts</a>
+                        <a href="javascript:void(0);"> <i className="bi bi-file-earmark-text me-2"></i>Drafts</a>
                     </div>
                     <div>
-                        <a href="/"> <i className="bi bi-trash me-2"></i>Trash</a>
+                        <a href="javascript:void(0);"> <i className="bi bi-trash me-2"></i>Trash</a>
                     </div>
 
                 </div>
@@ -99,7 +103,7 @@ const Compose = () => {
 
             <CategoriesSection />
 
-            <Labels /> 
+            <Labels />
 
             {composebox && <ComposeBox toggleCompose={setComposebox} />}
 

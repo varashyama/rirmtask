@@ -4,9 +4,9 @@ const ComposeBox = ({toggleCompose}) => {
 
     return (
         <section className="rounded compose_box bg-white border">
-            <div className="d-flex justify-content-between bg-dark text-white">
-                <p>New Message</p>
-                <button onClick={() => toggleCompose(false)}><i className="text-dark bi bi-x"></i></button>
+            <div className="d-flex justify-content-between bg-dark text-white ">
+                <p className="ps-2 pt-2">New Message</p>
+                <button onClick={() => toggleCompose(false)}><i className="bg-dark bi bi-x"></i></button>
             </div>
             <div className="container-fluid">
                 <div>

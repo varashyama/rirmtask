@@ -2,29 +2,42 @@ import './App.css';
 import 'antd/dist/antd.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import AppShell from './components/app-shell/app_shell';
-import Compose from './components/compose/compose';
 import Inbox from './components/inbox/inbox';
+import Sent from './components/sent/sent';
 import { seedData } from './services/seed';
+import Signin from './components/signin';
+import React, { useState,useMemo} from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+
 
 seedData();
+export const userContext = React.createContext({
+  userName: '',
+  setUserName: () => {},
+});
 
 function App() {
+  const [userName,setUserName] = useState('');
+  const value = useMemo(
+    () => ({ userName, setUserName }), 
+    [userName]
+  );
+  
   return (
-    <div className="h-100">
-      <AppShell>
-        <div className="container-fluid pt-4 bg-light h-100">
-          <div className="row">
-            <section className="col-12 col-md-4 col-lg-3">
-              <Compose />
-            </section>
-            <section className="col-12 col-md-8 bg-white">
-              <Inbox />
-            </section>
-          </div>
-        </div>
-      </AppShell>
-    </div>
+    <userContext.Provider value={value}>
+      <div className="h-100">
+        <Router>
+          <Routes>
+            <Route path='/' exact element={<Signin />}></Route>
+            <Route path="/inbox" element={<Inbox />}></Route>
+            <Route path="/sent" element={<Sent />}></Route>
+            <Route path="*" exact element={<Navigate to="/" />}></Route>
+          </Routes>
+        </Router>
+
+      </div>
+    </userContext.Provider>
+
   )
 }
 
