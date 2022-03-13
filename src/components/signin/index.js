@@ -8,7 +8,7 @@ import { userContext } from '../../App';
 
 
 const Signin = () => {
-    const { userName, setUserName } = useContext(userContext);
+    const { user, setUser } = useContext(userContext);
 
     const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const Signin = () => {
     const onFinish = (values) => {
         const result = login(values.username, values.password);
         if (result) {
-            setUserName(result.name);
+            setUser(result);
             // console.log(result.name);
             navigate("/inbox");
         }

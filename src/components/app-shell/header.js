@@ -6,12 +6,12 @@ import { useNavigate } from "react-router-dom";
 
 
 const Header = ({ collapsed, setCollapsed }) => {
-  const { userName, setUserName } = useContext(userContext);
+  const { user, setUser } = useContext(userContext);
   const navigate = useNavigate();
 
 
  function handleLogout(){
-        setUserName("");
+        setUser("");
         navigate("/");
   }
 
@@ -39,7 +39,7 @@ const Header = ({ collapsed, setCollapsed }) => {
             </span>
             <span>
               <i className="fs-5 bi bi-box-arrow-right me-2"></i>
-              <button className="border-0 bg-white me-3" onClick={handleLogout}>Logout {userName}</button>
+              <button className="border-0 bg-white me-3" onClick={handleLogout}>Logout {user.name}</button>
             </span>
           </div>
         </div>

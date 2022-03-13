@@ -12,17 +12,17 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 
 seedData();
 export const userContext = React.createContext({
-  userName: '',
-  setUserName: () => {},
+  user: '',
+  setUser: () => {},
 });
 
 function App() {
-  const [userName,setUserName] = useState('');
+  const [user,setUser] = useState('');
   const value = useMemo(
-    () => ({ userName, setUserName }), 
-    [userName]
+    () => ({ user, setUser }), 
+    [user]
   );
-  
+
   return (
     <userContext.Provider value={value}>
       <div className="h-100">

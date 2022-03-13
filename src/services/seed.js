@@ -1,4 +1,4 @@
-import { INBOX_MAILS } from "./constants";
+import { USERS } from "./constants";
 import { saveData } from "./storage-adaptar";
 
 export const seedData = () => {
@@ -13,5 +13,10 @@ export const seedData = () => {
     ];
 
 
-    saveData(INBOX_MAILS, mailContent);
+    USERS.forEach(({ inboxKey, sentKey }, i) => {
+        saveData(inboxKey, mailContent.map(x => Object.assign(x, { name: `${x.name} ${i + 1}`})));
+        saveData(sentKey, mailContent.map(x => Object.assign(x, { name: `Ayya Smith ${i + 1}`})));
+    });
+
+
 }
