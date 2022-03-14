@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { userContext } from "../../App";
+import { storageContext, userContext } from "../../App";
 import { getInboxEmails } from "../../services/mail";
 import AppShell from "../app-shell/app_shell";
 import Compose from "../compose/compose";
@@ -8,6 +8,7 @@ import MailListItem from "../mail-list-item";
 
 const Inbox = () => {
     const {user} = useContext(userContext);
+    useContext(storageContext);
     const mailContent = getInboxEmails(user.inboxKey);
 
     if (!user) {

@@ -11,6 +11,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 
 
 seedData();
+export const storageContext = React.createContext({
+  forcererender: '',setForcererender :() => {}
+});
+
 export const userContext = React.createContext({
   user: '',
   setUser: () => {},
@@ -18,13 +22,20 @@ export const userContext = React.createContext({
 
 function App() {
   const [user,setUser] = useState('');
+  const [rerenderOnStorageUpdate,setRerenderOnStorageUpdate] = useState(0);
   const value = useMemo(
     () => ({ user, setUser }), 
     [user]
   );
 
+  const storageContextValue = useMemo(
+    () => ([ rerenderOnStorageUpdate, setRerenderOnStorageUpdate ]), 
+    [rerenderOnStorageUpdate]
+  );
+
   return (
     <userContext.Provider value={value}>
+      <storageContext.Provider value={storageContextValue}>
       <div className="h-100">
         <Router>
           <Routes>
@@ -36,6 +47,8 @@ function App() {
         </Router>
 
       </div>
+      </storageContext.Provider>
+      
     </userContext.Provider>
 
   )

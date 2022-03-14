@@ -3,11 +3,12 @@ import AppShell from "../app-shell/app_shell";
 import Compose from "../compose/compose";
 import MailListItem from "../mail-list-item";
 import { useContext } from "react";
-import { userContext } from "../../App";
+import { storageContext, userContext } from "../../App";
 
 const Sent = () => {
     const { user } = useContext(userContext);
     const mailContent = getSentEmails(user.sentKey);
+    useContext(storageContext);
 
     if (!user) {
         return (<div>

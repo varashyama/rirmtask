@@ -10,7 +10,3 @@ export const readData = (key) => {
 export const removeData = (key) => {
     localStorage.removeItem(key);
 }
-
-export const updateData = (key, value) => {
-    saveData(key, value);
-}

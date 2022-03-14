@@ -1,11 +1,17 @@
 import './compose_box.css';
 import { useContext, useEffect, useState } from 'react';
-import { userContext } from '../../App';
+import { storageContext, userContext } from '../../App';
 import { USERS } from '../../services/constants';
+import { sendMail } from '../../services/sent';
+
 
 const ComposeBox = ({ toggleCompose }) => {
     const { user } = useContext(userContext);
     const [getUser, setGetUser] = useState({});
+    const [getmailData, setMailData] = useState({});
+    const [_, setRerenderer] = useContext(storageContext);
+
+    const [content, setContent] = useState('');
 
 
     useEffect(() => {
@@ -13,11 +19,25 @@ const ComposeBox = ({ toggleCompose }) => {
             return user.email !== i.email;
 
         })
-        console.log(usersData);
         setGetUser(usersData);
 
 
-    }, [user])
+    }, [user]);
+
+    function maildataChange(e){
+        const data = e.target.value;
+        setContent(data)
+    }
+
+    function handleSend(){
+        console.log('hello')
+        const todayDate = new Date().toLocaleString();
+        const mailContent = {name: user.name,content: content,date:todayDate}
+        const result = sendMail(user.email,getUser.email,mailContent);
+        toggleCompose(false)
+        setRerenderer(Math.random())
+
+    }
 
     return (
         <section className="rounded compose_box bg-white border">
@@ -39,10 +59,10 @@ const ComposeBox = ({ toggleCompose }) => {
                     <input className="w-100 border-0 border-bottom py-2" type="text" name="subject" placeholder="Subject"></input>
                 </div>
                 <div className="mt-4">
-                    <textarea className="w-100 body_text border"></textarea>
+                    <textarea className="w-100 body_text border" onChange={maildataChange}></textarea>
                 </div>
                 <div className="composebox_sendbtn mb-5">
-                    <button className="bg-primary text-white px-4 py-2 rounded border-0">send</button>
+                    <button className="bg-primary text-white px-4 py-2 rounded border-0" onClick={handleSend}>send</button>
                 </div>
             </div>
 
