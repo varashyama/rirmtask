@@ -28,10 +28,13 @@ const Signin = () => {
     };
 
     return (
-        <section>
-            <Form
+        <section className="container">
+           <div className="row justify-content-center">
+               <div className="col-12 col-md-6 col-lg-4">
+               <Form
                 name="basic"
                 className="mt-5"
+                layout="vertical"
                 labelCol={{
                     span: 8,
                 }}
@@ -48,7 +51,7 @@ const Signin = () => {
                 <Form.Item
                     label="Username"
                     name="username"
-                    className="w-25 m-auto mt-3"
+                    className="m-auto mt-3"
                     rules={[
                         {
                             required: true,
@@ -62,7 +65,7 @@ const Signin = () => {
                 <Form.Item
                     label="Password"
                     name="password"
-                    className="w-25 m-auto mt-3"
+                    className="m-auto mt-3"
                     rules={[
                         {
                             required: true,
@@ -76,27 +79,22 @@ const Signin = () => {
                 <Form.Item
                     name="remember"
                     valuePropName="checked"
-                    className="m-auto w-25"
-                    wrapperCol={{
-                        offset: 8,
-                        span: 16,
-                    }}
+                    className="m-auto"
+                  
                 >
                     <Checkbox>Remember me</Checkbox>
                 </Form.Item>
 
                 <Form.Item
-                    className="m-auto w-25 px-4 py-2"
-                    wrapperCol={{
-                        offset: 8,
-                        span: 16,
-                    }}
+                    className="m-auto text-center py-2"
                 >
                     <Button type="primary" htmlType="submit">
                         SIGN IN
                     </Button>
                 </Form.Item>
             </Form>
+               </div>
+           </div>
         </section>
     )
 }

@@ -10,9 +10,9 @@ const Header = ({ collapsed, setCollapsed }) => {
   const navigate = useNavigate();
 
 
- function handleLogout(){
-        setUser("");
-        navigate("/");
+  function handleLogout() {
+    setUser("");
+    navigate("/");
   }
 
   return (
@@ -37,9 +37,12 @@ const Header = ({ collapsed, setCollapsed }) => {
             <span className="me-2">
               <i className="fs-5 bi bi-bell-fill"></i>
             </span>
+            <b>
+              {user.name}
+            </b> &nbsp;
             <span>
-              <i className="fs-5 bi bi-box-arrow-right me-2"></i>
-              <button className="border-0 bg-white me-3" onClick={handleLogout}>Logout {user.name}</button>
+              <i className="fs-5 bi bi-box-arrow-right me-1"></i>
+              <button className="border-0 bg-white me-3" onClick={handleLogout}>Logout</button>
             </span>
           </div>
         </div>
