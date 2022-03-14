@@ -20,10 +20,10 @@ const Sent = () => {
         <AppShell>
             <div className="container-fluid pt-4 bg-light h-100">
                 <div className="row">
-                    <section className="col-12 col-md-4 col-lg-3">
+                    <section className="col-4 col-md-4 col-lg-3">
                         <Compose />
                     </section>
-                    <section className="col-12 col-md-8 bg-white">
+                    <section className="col-8 col-md-8 bg-white">
                         <section className="d-flex justify-content-between align-items-center">
                             <div>
                                 <h4>Sent</h4>

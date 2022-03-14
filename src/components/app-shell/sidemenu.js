@@ -20,7 +20,7 @@ const Sidemenu = ({ collapsed }) => {
 
 
     return (
-        <div className="h-100">
+        <div className="h-100 side_menu">
             <Menu
                 className="h-100"
                 defaultSelectedKeys={['1']}

@@ -7,7 +7,7 @@ const AppShell = ({ children }) => {
     const [collapsed, setCollapsed] = useState(false);
     return (
         <div className="d-flex w-100 h-100 app-shell">
-            <div className="h-100">
+            <div className="h-100 side_menu">
                 <Sidemenu collapsed={collapsed} />
             </div>
             <div className="flex-fill" style={{ overflowY: 'auto'}}>
